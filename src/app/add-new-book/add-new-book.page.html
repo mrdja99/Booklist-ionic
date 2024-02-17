@@ -7,19 +7,23 @@
 <ion-content class="ion-padding">
   <ion-list>
     <ion-item>
-      <ion-input placeholder="Book name"></ion-input>
+      <ion-input placeholder="Book name" [(ngModel)]="bookName" required></ion-input>
     </ion-item>
+    <br />
     <ion-item>
-      <ion-input type="string" placeholder="Writer"></ion-input>
+      <ion-input type="string" placeholder="Writer" [(ngModel)]="bookWriter" required></ion-input>
     </ion-item>
+    <br />
     <ion-item>
-      <ion-input type="string" value="Enter image url"></ion-input>
+      <ion-input type="string" placeholder="Enter image url" [(ngModel)]="bookImage" required></ion-input>
     </ion-item>
+    <br />
     <ion-item>
-      <ion-input type="string" placeholder="Synopsys"></ion-input>
+      <ion-input type="string" placeholder="Synopsys" [(ngModel)]="bookSynopsys" required></ion-input>
     </ion-item>
+    <br />
     <ion-item>
-      <ion-select label="Rate book" placeholder="Your book rating">
+      <ion-select label="Rate book" placeholder="Your book rating" [(ngModel)]="bookRating" required>
         <ion-select-option value="1">1</ion-select-option>
         <ion-select-option value="2">2</ion-select-option>
         <ion-select-option value="3">3</ion-select-option>
@@ -27,5 +31,14 @@
         <ion-select-option value="5">5</ion-select-option>
       </ion-select>
     </ion-item>
+    <br />
+    <ion-button expand="block" color="secondary" (click)="filledForm()">Add</ion-button>
+    <!--<ion-alert
+        trigger="present-alert"
+        header="Succesful"
+        message="Book is successfuly added to the list."
+        [buttons]="alertButtons"
+        routerLink="/home"
+      ></ion-alert>-->
   </ion-list>
 </ion-content>

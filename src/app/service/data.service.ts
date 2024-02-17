@@ -35,4 +35,9 @@ export class DataService {
     return deleteDoc(bookRef);
   }
 
+  addBook(book: Book) {
+    const booksRef = collection(this.firestore,'books');
+    return addDoc(booksRef,book);
+  }
+
 }
