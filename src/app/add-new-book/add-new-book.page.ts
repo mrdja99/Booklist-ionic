@@ -37,10 +37,12 @@ export class AddNewBookPage implements OnInit {
       const alert = this.alertCtrl.create({
         header: "Added",
         subHeader: "Book is succesfully added to list",
-        buttons: ['OK']
+        buttons: [{
+          text: 'OK',
+          handler: () => {this.router.navigateByUrl('/home');}
+        }]
       });
       (await alert).present();
-      this.router.navigateByUrl('/home');
     }
   }
 
