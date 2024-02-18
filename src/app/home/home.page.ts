@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DataService } from '../service/data.service';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, NavController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { EditBookPage } from '../edit-book/edit-book.page';
 
 type Book = {
   imgUrl?: string,
@@ -23,7 +24,7 @@ export class HomePage implements OnInit, OnDestroy{
 
   sub:Subscription = new Subscription;
 
-  constructor(private dataService: DataService, private router:Router, private alertCtrl: AlertController) {}
+  constructor(private dataService: DataService, private router:Router, private alertCtrl: AlertController, private modalCtrl: ModalController) {}
 
   ngOnInit(): void {
     this.getData();
@@ -59,5 +60,14 @@ export class HomePage implements OnInit, OnDestroy{
     this.router.navigateByUrl('/add-new-book');
   }
 
+  async goToEditPage(book:Book) {
+    const modal = await this.modalCtrl.create({
+      component: EditBookPage,
+      componentProps: {
+        book: book
+      }
+    });
+    return await modal.present();
+  }
 
 }

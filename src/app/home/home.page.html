@@ -19,7 +19,7 @@
       </ion-item>
       <ion-item-options>
         <ion-item-option>
-          <ion-button>
+          <ion-button (click)="goToEditPage(book)">
             <ion-icon name="create" slot="icon-only"></ion-icon>
           </ion-button>
           <ion-button (click)="deleteBook(book.id)">

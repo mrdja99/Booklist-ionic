@@ -1,0 +1,38 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Edit book</ion-title>
+    <ion-icon name="close-outline" slot="end" (click)="dismiss()" size="large"></ion-icon>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list>
+    <ion-item>
+      <ion-input placeholder="Book name" [(ngModel)]="book.name" required></ion-input>
+    </ion-item>
+    <br />
+    <ion-item>
+      <ion-input type="string" placeholder="Writer" [(ngModel)]="book.writer" required></ion-input>
+    </ion-item>
+    <br />
+    <ion-item>
+      <ion-input type="string" placeholder="Enter image url" [(ngModel)]="book.imgUrl" required></ion-input>
+    </ion-item>
+    <br />
+    <ion-item>
+      <ion-input type="string" placeholder="Synopsys" [(ngModel)]="book.synopsys" required></ion-input>
+    </ion-item>
+    <br />
+    <ion-item>
+      <ion-select label="Rate book" placeholder="Your book rating" [(ngModel)]="book.rating" required>
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <br />
+    <ion-button expand="block" color="secondary" (click)="editedBook()">Edit book</ion-button>
+  </ion-list>
+</ion-content>

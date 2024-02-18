@@ -5,7 +5,8 @@ import {
   collectionData,
   doc,
   deleteDoc, 
-  addDoc
+  addDoc,
+  updateDoc
 } from '@angular/fire/firestore';
   
 
@@ -38,6 +39,18 @@ export class DataService {
   addBook(book: Book) {
     const booksRef = collection(this.firestore,'books');
     return addDoc(booksRef,book);
+  }
+
+  editBook(book: Book) {
+    const bookRef = doc(this.firestore,`books/${book.id}`);
+    return updateDoc(bookRef,{
+      imgUrl: book.imgUrl,
+      name: book.name,
+      rating: book.rating,
+      synopsys: book.synopsys,
+      writer: book.writer
+    });
+
   }
 
 }
