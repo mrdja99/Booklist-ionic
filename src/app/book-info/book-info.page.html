@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-icon name="arrow-back-outline" slot="start" size="large" (click)="goBack()"></ion-icon>
+    <ion-title>Book info</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-card>
+    <img alt="Silhouette of mountains" src={{book.imgUrl}} style="width:100%"/>
+    <ion-card-header>
+      <ion-card-title>{{book.name}}</ion-card-title>
+      <ion-card-subtitle>{{book.writer}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{book.synopsys}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

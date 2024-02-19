@@ -24,7 +24,13 @@ export class HomePage implements OnInit, OnDestroy{
 
   sub:Subscription = new Subscription;
 
-  constructor(private dataService: DataService, private router:Router, private alertCtrl: AlertController, private modalCtrl: ModalController) {}
+  constructor(
+    private dataService: DataService, 
+    private router:Router, 
+    private alertCtrl: AlertController, 
+    private modalCtrl: ModalController,
+    private navCtrl: NavController
+    ) {}
 
   ngOnInit(): void {
     this.getData();
@@ -68,6 +74,14 @@ export class HomePage implements OnInit, OnDestroy{
       }
     });
     return await modal.present();
+  }
+  
+  goToBookInfoPage(book:Book) {
+    this.navCtrl.navigateForward(['/book-info'], {
+      state: {
+        book:book
+      }
+    })
   }
 
 }
