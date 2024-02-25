@@ -19,6 +19,13 @@ export interface Book{
   writer: string;
 }
 
+export interface User{
+  email: string;
+  password: string;
+  name: string;
+  surname: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -51,6 +58,16 @@ export class DataService {
       writer: book.writer
     });
 
+  }
+
+  getUsers() {
+    const usersRef = collection(this.firestore,'users');
+    return collectionData(usersRef, {idField: 'id'});
+  }
+
+  addUser(user: User) {
+    const usersRef = collection(this.firestore, 'users');
+    return addDoc(usersRef,user); 
   }
 
 }
