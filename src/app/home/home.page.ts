@@ -18,19 +18,19 @@ type Book = {
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit, OnDestroy{
+export class HomePage implements OnInit, OnDestroy {
 
   books: any;
 
-  sub:Subscription = new Subscription;
+  sub: Subscription = new Subscription;
 
   constructor(
-    private dataService: DataService, 
-    private router:Router, 
-    private alertCtrl: AlertController, 
+    private dataService: DataService,
+    private router: Router,
+    private alertCtrl: AlertController,
     private modalCtrl: ModalController,
     private navCtrl: NavController
-    ) {}
+  ) { }
 
   ngOnInit(): void {
     this.getData();
@@ -52,7 +52,7 @@ export class HomePage implements OnInit, OnDestroy{
       buttons: [
         {
           text: 'OK',
-          handler: () => {this.dataService.deleteBook(bookId);}
+          handler: () => { this.dataService.deleteBook(bookId); }
         },
         {
           text: 'Cancel'
@@ -66,7 +66,7 @@ export class HomePage implements OnInit, OnDestroy{
     this.router.navigateByUrl('/add-new-book');
   }
 
-  async goToEditPage(book:Book) {
+  async goToEditPage(book: Book) {
     const modal = await this.modalCtrl.create({
       component: EditBookPage,
       componentProps: {
@@ -75,13 +75,27 @@ export class HomePage implements OnInit, OnDestroy{
     });
     return await modal.present();
   }
-  
-  goToBookInfoPage(book:Book) {
+
+  goToBookInfoPage(book: Book) {
     this.navCtrl.navigateForward(['/book-info'], {
       state: {
-        book:book
+        book: book
       }
     })
+  }
+
+  async logOut() {
+    const alert = this.alertCtrl.create({
+      header: 'Do you want to logout?',
+      buttons: [{
+        text: 'Yes',
+        handler: () => { this.router.navigateByUrl('/log-in'); }
+      },
+      {
+        text: 'No'
+      }]
+    });
+    (await alert).present();
   }
 
 }

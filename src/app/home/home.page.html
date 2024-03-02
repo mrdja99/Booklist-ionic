@@ -1,6 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title class="ion-text-center">Booklist</ion-title>
+    <ion-icon name="exit" slot="end" size="large" (click)="logOut()"></ion-icon>
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +13,7 @@
           <img src={{book.imgUrl}} alt="Book image">
         </ion-thumbnail>
         <ion-label>{{book.name}}</ion-label>
-        <ion-icon name="star-outline" slot="end" color="warning" ></ion-icon>
+        <ion-icon name="star-outline" slot="end" color="warning"></ion-icon>
         <ion-text slot="end" class="ion-padding-horizontal">
           <p>{{book.rating}}</p>
         </ion-text>
@@ -23,13 +24,12 @@
             <ion-icon name="create" slot="icon-only"></ion-icon>
           </ion-button>
           <ion-button (click)="deleteBook(book.id)">
-            <ion-icon name="trash" color="danger" slot="icon-only" ></ion-icon>
+            <ion-icon name="trash" color="danger" slot="icon-only"></ion-icon>
           </ion-button>
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
-  <ion-button expand="block" class="ion-padding-vertical" color="secondary" (click)="goToAddPage()">Add new book</ion-button>
+  <ion-button expand="block" class="ion-padding-vertical" color="secondary" (click)="goToAddPage()">Add new
+    book</ion-button>
 </ion-content>
-
-
